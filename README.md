@@ -4,8 +4,9 @@
 www.shadow-fly.us
 
 ## Vim
-1. brew/vim with python3/macvim/spacevim
-2. How do I enable YouCompleteMe?\
+1. brew/vim with python3/macvim/spacevim\
+  https://everettjf.gitbooks.io/spacevimtutorial/content/
+3. How do I enable YouCompleteMe?\
   I do not recommend using YouCompleteMe.
   It is too big as a vim plugin. Also, I do not like using submodules in a vim
   plugin. It is hard to manage with a plugin manager.
