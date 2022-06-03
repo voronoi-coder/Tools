@@ -6,7 +6,7 @@ www.shadow-fly.us
 ## Vim
 1. brew/vim with python3/macvim/spacevim\
   https://everettjf.gitbooks.io/spacevimtutorial/content/
-3. How do I enable YouCompleteMe?\
+2. How do I enable YouCompleteMe?\
   I do not recommend using YouCompleteMe.
   It is too big as a vim plugin. Also, I do not like using submodules in a vim
   plugin. It is hard to manage with a plugin manager.
@@ -20,3 +20,6 @@ www.shadow-fly.us
   get into it and run git submodule update --init --recursive.
   Step 3: Compile YouCompleteMe with the features you want. If you just want
   C family support, run ./install.py --clangd-completer.
+3. denite.vim
+:pythonx import sys; print(sys.path)
+$ /usr/local/opt/python@3.10/Frameworks/Python.framework/Versions/3.10/bin/pip3 install --user pynvim
