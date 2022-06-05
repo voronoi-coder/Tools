@@ -8,7 +8,12 @@ www.shadow-fly.us
 2. 参考spacevim配置：
 3. .vimrc/Vundle
 4. install Nerd fonts\
-  set guifont=SauceCodePro\ Nerd\ Font\ Mono:h12"
+  if has("gui_running")
+    echo "yes, we have a GUI"
+    if has("gui_macvim")
+      :set guifont=SauceCodePro\ Nerd\ Font\ Mono:h12"
+    endif
+  endif
 5. 基本设置:set...
 6. schema: gruvbox
 7. vimawesome:
