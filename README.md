@@ -7,9 +7,11 @@ www.shadow-fly.us
 1. brew/vim with python3/macvim
 2. 参考spacevim配置：
 3. .vimrc/Vundle
-4. install Nerd fonts
+4. install Nerd fonts\
+  set guifont=SauceCodePro\ Nerd\ Font\ Mono:h12"
 5. 基本设置:set...
-6. vimawesome:
+6. schema: gruvbox
+7. vimawesome:
   NERDTree/YCM/Leaderf/airline
 
 ## 常见问题：python版本
