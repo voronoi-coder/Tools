@@ -4,22 +4,14 @@
 www.shadow-fly.us
 
 ## Vim
-1. brew/vim with python3/macvim/spacevim\
-  https://everettjf.gitbooks.io/spacevimtutorial/content/
-2. How do I enable YouCompleteMe?\
-  I do not recommend using YouCompleteMe.
-  It is too big as a vim plugin. Also, I do not like using submodules in a vim
-  plugin. It is hard to manage with a plugin manager.
-  Step 1: Add let g:spacevim_enable_ycm = 1 to custom_config. By default
-  it should be ~/.SpaceVim.d/init.vim.
-  Step 2: Get into the directory of YouCompleteMe’s author. By default it
-  should be ~/.cache/vimfiles/repos/github.com/Valloric/. If you find the
-  directory YouCompleteMe in it, go into it. Otherwise clone
-  YouCompleteMe repo by
-  git clone https://github.com/Valloric/YouCompleteMe.git. After cloning,
-  get into it and run git submodule update --init --recursive.
-  Step 3: Compile YouCompleteMe with the features you want. If you just want
-  C family support, run ./install.py --clangd-completer.
-3. denite.vim
+1. brew/vim with python3/macvim
+2. 参考spacevim配置：
+3. .vimrc/Vundle
+4. install Nerd fonts
+5. 基本设置:set...
+6. vimawesome:
+  NERDTree/YCM/Leaderf/airline
+
+## 常见问题：python版本
 :pythonx import sys; print(sys.path)
 $ /usr/local/opt/python@3.10/Frameworks/Python.framework/Versions/3.10/bin/pip3 install --user pynvim
