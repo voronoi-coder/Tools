@@ -4,7 +4,8 @@
 www.shadow-fly.us
 
 ## Vim
-1. brew/vim with python3/macvim
+1. brew/ brew install vim(with python3)/macvim\
+  注意python版本，尽量避免vim的python3版本与terminal中的python3版本不一致
 2. 参考spacevim配置：
 3. .vimrc/Vundle
 4. install Nerd fonts\
