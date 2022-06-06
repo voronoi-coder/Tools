@@ -1,9 +1,6 @@
 " Leader
 let mapleader = ","
 
-" colorscheme
-colorscheme desert
-set background=dark
 
 set number
 au WinLeave * set nocursorline nocursorcolumn
@@ -20,7 +17,7 @@ set hlsearch
 if has("gui_running")
 	echo "yes, we have a GUI"
 	if has("gui_macvim")
-		:set guifont=SauceCodePro\ Nerd\ Font\ Mono:h12"
+		:set guifont=SauceCodePro\ Nerd\ Font\ Mono:h13"
 	endif
 endif
 
@@ -37,15 +34,26 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'preservim/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'yggdroot/leaderf'
 Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
+
+" colorscheme
+" must set ofter plugin is loaded
+syntax enable
+set background=dark
+"set background=light
+"let g:gruvbox_contrast_dark='soft'
+"let g:gruvbox_contrast_dark='medium'
+"let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
+" colorscheme desert
 
 " NERDTree
 let g:NERDTreeNodeDelimiter = "\u00a0"
@@ -83,21 +91,8 @@ noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 noremap <leader>fs :<C-U><C-R>=printf("Leaderf! rg -e ")<CR>
-
 noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
-" search visually selected text literally
-xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
-noremap go :<C-U>Leaderf! rg --recall<CR>
-
-" should use `Leaderf gtags --update` first
-let g:Lf_GtagsAutoGenerate = 0
-let g:Lf_Gtagslabel = 'native-pygments'
-noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 """ LeaderF End
 
 " airline
@@ -108,6 +103,25 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
 """ YouCompleteMe
+nmap <leader>sw <Plug>(YCMFindSymbolInWorkspace)
+nmap <leader>sd <Plug>(YCMFindSymbolInDocument)
+nmap <leader>c :YcmForceCompileAndDiagnostics<CR>
+nmap <leader>d <plug>(YCMHover)
+
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+nnoremap <leader>gs :YcmCompleter GoToSymbol 
+nnoremap <leader>f :YcmCompleter Format<CR>
+nnoremap <leader>fi :YcmCompleter FixIt<CR>
+nnoremap <leader>rr :YcmCompleter RefactorRename 
+
+let g:ycm_auto_hover=''
+let g:ycm_confirm_extra_conf=0 "不再询问是否加载.ycm_extra_conf.py文件
+let g:ycm_complete_in_comments = 1  "注释也用补全
+let g:ycm_complete_in_strings=1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_key_invoke_completion = '<C-Space>'
 """ YouCompleteMe End
 
 """ easymotion
