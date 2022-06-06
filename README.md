@@ -18,8 +18,8 @@ www.shadow-fly.us
   endif
 5. 基本设置:set...
 6. schema: gruvbox
-7. vimawesome:
-  NERDTree/YCM/Leaderf/airline/easymotion
+7. vimawesome: 注意加载插件与设置插件变量的顺序
+  NERDTree/YCM/Leaderf/airline/easymotion/gruvbox
 
 ## 常见问题：python版本
 :pythonx import sys; print(sys.path)
