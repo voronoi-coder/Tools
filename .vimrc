@@ -13,6 +13,13 @@ set splitbelow
 set splitright
 set hlsearch
 
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+
 " font
 if has("gui_running")
 	echo "yes, we have a GUI"
@@ -39,6 +46,9 @@ Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'tpope/vim-surround'
+" Plugin 'puremourning/vimspector'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -140,3 +150,7 @@ nmap <Leader><Leader>l <Plug>(easymotion-overwin-line)
 map  <Leader><Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader><Leader>w <Plug>(easymotion-overwin-w)
 """ easymotion
+
+""" vimspector 
+let g:vimspector_enable_mappings = 'HUMAN'
+""" vimspector 
