@@ -4,6 +4,7 @@
 4. check git/python3/go/nodejs/cmake版本
 5. brew install vim/brew install macvim
 6. check vim的python3版本与terminal中的python3版本是否一致
+    :pythonx import sys; print(sys.path) $ /usr/local/opt/python@3.10/Frameworks/Python.framework/Versions/3.10/bin/pip3 install --user pynvim
 7. 参考spacevim配置：
 8. .vimrc/Vundle :source % // 重新加载.vimrc
 9. install Nerd fonts
