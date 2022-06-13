@@ -1,0 +1,13 @@
+1. 升级最新Mac系统
+2. install xcode
+3. install brew: https://brew.sh/
+4. check git/python3/go/nodejs/cmake版本
+5. brew install vim/brew install macvim
+6. check vim的python3版本与terminal中的python3版本是否一致
+7. 参考spacevim配置：
+8. .vimrc/Vundle :source % // 重新加载.vimrc
+9. install Nerd fonts
+  if has("gui_running") echo "yes, we have a GUI" if has("gui_macvim") :set guifont=SauceCodePro\ Nerd\ Font\ Mono:h12" endif endif
+10. 基本设置:set...
+11. schema: gruvbox
+12. vimawesome: 注意加载插件与设置插件变量的顺序 NERDTree/YCM/Leaderf/airline/easymotion/gruvbox
