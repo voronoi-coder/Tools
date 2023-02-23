@@ -8,6 +8,8 @@
 7. 参考spacevim配置：
 8. .vimrc/Vundle :source % // 重新加载.vimrc
 9. install Nerd fonts
+    brew tap homebrew/cask-fonts
+    brew install --cask font-sauce-code-pro-nerd-font
   if has("gui_running") echo "yes, we have a GUI" if has("gui_macvim") :set guifont=SauceCodePro\ Nerd\ Font\ Mono:h12" endif endif
 10. 基本设置:set...
 11. schema: gruvbox
