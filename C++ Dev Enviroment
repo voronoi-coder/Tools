@@ -8,7 +8,9 @@
 6. check vim的python3版本与terminal中的python3版本是否一致
     :pythonx import sys; print(sys.path) $ /usr/local/opt/python@3.10/Frameworks/Python.framework/Versions/3.10/bin/pip3 install --user pynvim
 7. 参考spacevim配置：
-8. .vimrc/Vundle :source % // 重新加载.vimrc
+8. git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    :PluginInstall
+   :source % // 重新加载.vimrc
 9. install Nerd fonts
     brew tap homebrew/cask-fonts
     brew install --cask font-sauce-code-pro-nerd-font
