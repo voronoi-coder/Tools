@@ -5,7 +5,8 @@
 5. brew install macvim(也会安装vim)
     ln -s /Applications/MacVim.app/Contents/bin/mvim /usr/local/bin
     下载并安装macvim对应的python
-6. check vim的python3版本与terminal中的python3版本是否一致
+    rg: brew install ripgrep
+#(invalid)6. check vim的python3版本与terminal中的python3版本是否一致
     :pythonx import sys; print(sys.path) $ /usr/local/opt/python@3.10/Frameworks/Python.framework/Versions/3.10/bin/pip3 install --user pynvim
 7. 参考spacevim配置：
 8. git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
