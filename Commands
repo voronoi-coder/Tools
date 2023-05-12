@@ -1,0 +1,423 @@
+Commands:
+open -b com.google.android.studio .
+open -a Clion .
+mv /usr/lib/* /dir  mv /usr/lib/*.txt /dir mv ./dir1  ./dir2
+rm -r `ls|egrep -v '(CMakeLists.txt|README.MD)'`
+pwd | pbcopy
+
+vim:
+  80gg  gg  80G G H M L ^o ^i
+  ^f  ^b  ^d  ^u  ^e  ^y  z[Enter]  z.  z-
+  navigation:
+    %   0   ^   $
+  total chars: g^g
+  file:
+    :open file  :bn :bp     :sp :sp file  :vsp  :vsp file   ^w+h/j/k/l  ^w+c ^w+r(R)
+    ^w+n>/</+/-  ^w_    ^w| ^w=
+    gf  ^o  ^] :cd ./dir :pwd   :set path+=./dir    :set path+=dir/**   gd  gD :se path?
+    :new *.*  :e *.*  :w *.* :x :1,12w!other.txt  :f rename.txt
+    :NERDTreeFind
+  buffer:
+    ctrl-^
+  edit:
+    r   R   s   S   cc cw   x   X   
+    .   ~   g~iw    gUiw    guiw   guu  gUU << >> ==    ctrl-a  ctrl-x  yiw viw
+    g_CTRL-G
+    vi) vi} :set paste  :set nopaste    ddp gcc gcap
+    d   D   d^  dw  di' di" di} di] d}  d{  di( dta dfa :n,md
+    delete: c   cc(d dd)    X dw    de  dE  db  dB  dt  df
+    !4jsort     !}tr "[:lower:]" "[:upper:]"    !5juniq
+    :g/^\s*$/d
+  line:
+    0 $ w W e b dd  J   zf{motion}  zo  zc  zr  zm  zR  zM  zfap    zf%
+    :mkview :loadview
+  insert:
+    i I a A o O gi
+    :r !date +"\%Y-\%m-\%d" :r !seq 1.0 2.0 10.0    :r !echo {1..10}    :r !echo {a..z}
+    :r !date -v+sun +"\%Y/\%m/\%d"  r !date -v-1y -v+1m -v-1d +"\%Y/\%m/\%d"
+    :r !date -v-mon +\%Y/\%m/\%d--\%Y/\%m/\%d
+    :for i in range(1,10) | put = i.'.0' | endfor
+  replace:
+    r+ ;    s+ ;    3s+ ;   R+; cw, c2w, cb, c2b, c0, c$=C; cc=S;   ~   gu  gU
+    g~  
+    [ranges]s/from/to/[flags]
+    :.s/from/to/g   :33s/from/to/g  :10,20s/from/to/g   :.,$s/from/to/g
+    :%s/from/to/g  :%s/\s\+/,/g :%s/^\s\+   :%s/\s\+$   :%s/^/#/g   :%s/;/;\r/g
+    :%s/\(vbm_.*\)/\U\1/g   :.,384s/= new.*/= null;/g
+    :%s/string//gn
+    :%s/.*std::cout.*\n//g
+    :%s/^.//g
+    :%s/\(.*ParkingBox.*\)zOffset='0.000\(.*\)/\1zOffset='0.01\2/gk
+  find:
+    :set ignorecase :set noignorecase   / /\<word\>    ? :noh :vimgrep /the menu/ **/*.*  :copen  :cc :cn :cp
+    :vimgrep /pattern/ %    *   **  *.c     **/*
+    :vimgrep /pattern/g `git ls-files`
+    /^#.*CONFIG.*$
+    *   #   g*  g#
+  view:
+    :set nu :set nonu
+  format:
+    >>  <<  :10,100>  :10,100<
+    :set cindent  :set smartindent  :set autoindent
+    :%!python -m json.tool
+    :%!python -c "import re,sys;sys.stdout.write(re.sub(r'\\\u[0-9a-f]{4}', lambda m:m.group().decode('unicode_escape').encode('utf-8'), sys.stdin.read()))"
+  copy and paste:
+    yy  2yy y0  y$  yw  y2w yG  y1G :1,12y  d...  d$=D;  x;   p P     "+yy  "+p :reg(registers)     cas cis
+  column edit:
+    1.hjkl  2.^v  3.G 4.d     1.hjkl  2.^v  3.G 4.I 5...  6.esc esc
+  sort:
+    1,58!sort -r -n -k5.1,5
+  repeat
+    .   :g/^\s/d :g/^$/d    :g/^[\s|\t]*$/d :g/pattern/d
+  help:
+    help x  help index help CTRL-A
+  tagbar:
+    F6  ?
+  tabular:
+    :'<,'>Tabularize /,/r0c1
+  YCM:  ./config_gen.py PROJECT_DIRECTORY
+    :YcmDiags   :YcmForceCompileAndDiagnostics  :YcmDebugInfo
+    '-isystem',
+    '/usr/local/include',
+    '-isystem',
+    '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1',
+    '-isystem',
+    '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/include',
+    '-isystem',
+    '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
+    '-isystem',
+    '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include',
+    '-isystem',
+    '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks',
+  ctrlp
+    ^p  :help ctrlp :find file<Tab> ^r  ^d  :CtrlPMRU  :CtrlPBuffer
+    :CtrlPClearCache    <c-f>   <c-b>   <c-n>   <c-p>
+  shell:    :shell  exit
+    :!{cmd} :!!
+  ctags
+    brew install ctags-exuberant
+    which -a ctags
+    /usr/local/bin/ctags -R --exclude='.svn'
+    ctags -L cscope.files
+    
+    ^]  ^t    gd  gD
+    :tag symbol   :stag symbol(^w] ^wn]) :ptag symbol{^w}} :pclose
+    :tag symbol<Tab>  :tag /^symbol$<Tab> :tselect /^symbol$<Tab>
+    :tags
+  cscope: http://cscope.sourceforge.net/large_projects.html
+    cscope -b -q -k
+    :mvim -t dorender   Ctrl-\ s    Ctrl-@@ s   Ctrl-@@ c
+    :cs find s/g/d/c/e/f/i
+  regex:
+  quickfix:
+    :make [arguments]   :copen 50   :cw
+  diff:
+    :diffsplit file2
+  easymotion:
+    <leader><leader>f{char}     <leader><leader>w   <leader><leader>j
+    <leader><leader>n   <leader><leader>N   <leader><leader>s
+  surround:
+    ds( ds[
+    cs([   cs([
+    ysiw(   ysiW(
+  terminal:
+    :vert ter   ^W N    ^W-^C
+
+git:
+  git checkout /src/*.cpp
+  git diff /src/*.cpp  
+  git difftool --tool=vimdiff
+  git add . git reset /src/*.*  git add -u <path>
+  git add -i
+  git commit -m '***'
+    git commit --amend
+  git push
+  git cherry-pick commit-id
+        cherry-pick A^..B
+  git log --graph --decorate --oneline --simplify-by-decoration --all
+    git log -h  git log -p  git log -- filename
+    git log --pretty="%h-%s" --author=yinwei --since="2019-02-24"
+    --before="2019-02-26" --no-merges --since=2.days
+    --stat  --shortstat
+    git log --author=junhe --since=12.days --oneline --stat
+    git show commit-id file-path
+    git log --author="junhe" --since=5.days --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
+    git log branchname --
+    git log --author=junhe --pretty="format: %ci %h-%s" --all
+  git blame filename
+  git reset --hard HEAD^    git reset --hard commit-id
+  git merge branchname
+  branch:
+    git push origin ***
+    git push origin branch:origin/new_branch
+    git checkout -b myname origin/br_name
+    git branch -vv
+    git rebase origin/dev
+    git push origin --delete <branchName>
+    git branch -d <branchName>
+    git branch --set-upstream-to=origin/<branchName>
+  stash:
+    git stash   git stash save "message"    git stash apply stashname   git
+    stash drop stashname    git stash clear git stash show -p stashname    
+    git stash show 0
+    git stash list
+    git stash pop
+    git stash --help
+    git diff stash@{0}^1 stash@{0} -- <filename>
+    git diff stash@{0}^! -- <filename>
+    git checkout stash@{0} -- <filename>
+    git show stash@{0}:<full filename>  >  <newfile>
+  github:(need create a new repository on Github)
+    create a new repository:
+        echo "# CPPInPractice" >> README.md
+        git init
+        git add README.md
+        git commit -m "first commit"
+        git remote add origin https://github.com/hahahJoey/CPPInPractice.git
+        git push -u origin master
+    push an existing repository:
+        git remote add origin https://github.com/hahahJoey/CPPInPractice.git
+        git push -u origin master
+  patch:
+    git format-patch -1 (commit-id)
+    git format-patch (commit-id) .. (commit-id)
+    git diff > *.patch
+    git apply --check path/*.patch *.diff
+    git apply path/*.patch *.diff  || git am path/*.patch
+  revert:
+    git revert commit-id
+        solve conflict
+    git revert --continue
+  ls-files ./src    -m  -d  
+  git ls-files | wc -l
+
+who
+  ifconfig
+  ssh root@ip 
+  who
+  echo "..." > /dev/*
+  echo -e "\033[31mHey. Binn.\033[0m" > /dev/pts/0 
+
+sqlite3
+  .help  sqlite3 ***.db  .quit  .show   .schema     .mode column(csv)
+  .separator "|" .headers on
+  attach 'c:\test\b.db3' as toMerge;
+  BEGIN;
+  insert into AuditRecords select * from toMerge.AuditRecords;
+  COMMIT;
+  detach toMerge;
+bc
+  bc<<< 5*4     echo '5*4'|bc   
+  bc<<HERE
+  >5+4
+  >5+3
+  >5-1
+  >here
+  echo '5-4;last+6'|bc  echo '5-4;.+6'|bc
+  echo 'scale=10;sqrt(10)'|bc
+  echo 'obase=16;ibase=A;80'|bc
+  echo 's(2)'|bc -l
+  echo 'c(2)'|bc -l
+  echo 'a(2)'|bc -l
+  echo 'l(2)'|bc -l echo 'l(2)/l(1.5)'|bc -l
+  echo 'e(2)'|bc -l
+  echo 'j(2, 4)'|bc -l
+
+
+make
+  make <target> BUILDTYPE=Debug
+  make all  make clean  make help
+
+ln -s /Applications/MacVim.app/Contents/bin/mvim /usr/local/bin/mvim
+
+find
+  find . -name '*sim*'
+  find . -mtime -1
+  find . -mmin -30
+  find include/ src/ platforms/  "(" -name "*.cpp" -or -name "*.h" ")" -print | xargs wc -l
+  find . -mtime 0 -exec rm -rf {} \;
+  find ./ -type d -name ".settings" | xargs rm -rf
+  find . -maxdepth 1  "(" -name "*.cpp" -or -name "*.h" -or -name "*.cc" ")" -print | xargs wc -l
+  find . -name "*.gradle" | xargs grep "3\.18\.4"
+grep
+  grep -r word ./
+sed
+  sed -n 's/Pkg.Revision = \([0-9]*\).*/\1/p' ${ANDROID_NDK_ROOT}/source.properties
+  sed -n '$s/add_executable(\([A-Za-z]*\).*/\1/p' CMakeLists.txt
+export -p
+  sed -i -e '1d' $File
+seq
+  seq -f "str%03g" 9 11     seq -w 98 101   seq -s"`echo -e "/t"`" 9 11     seq -s" " -f"str%03g" 9 11
+
+trans
+    :fr word  fr: mot   :zh 'Out, out, brief candle!'
+    -j :zh Life\'s but a walking shadow, a poor player
+    -b word
+    -b -p :ja "Saluton, Mondo"
+    -d -v word
+    -sp "你好，世界"
+    -shell -I
+    -R  -T
+ls
+    -l -a -F -R -t
+    ls -l |grep "^-"|wc -l
+    ls -l |grep "^d"|wc -l
+    ls -lR|grep "^-"|wc -l
+    ls -lR|grep "^d"|wc -l
+cal
+    ncal -w
+lldb
+    console crash log
+    lldb <app-name> h   r   b   n   v
+    breakpoint list delete  clear
+    c -- Continue execution
+    s -- stepping into
+android:
+    mvim /Users/junhe/Library/Logs/Google/AndroidStudio2021.2/idea.log
+    adb
+      adb logcat | /Users/junhe/Library/Android/sdk/ndk-bundle/ndk-stack -sym /Users/junhe/map-render/platforms/android/mtmap/bin/armeabi-v7a/
+          logcat -s "junhe"
+            logcat 'junhe:I'
+            logcat | grep -E "tag1|tag2|tag3|tag4|tag5"
+            logcat -b crash | ndk-stack -sym ../TXMapSDK_Android_new/mapsdk/build/intermediates/cmake/debug/obj/arm64-v8a
+      adb shell
+        run-as com.tencent.mapsdk.demo
+            ls -al
+        run-as com.tencent.mapsdk.demo sh -c 'ls -al /data/data/com.tencent.mapsdk.demo/files/tencent/txmapsdk/com.tencent.mapsdk.demo/data/v3/render/' || echo ERR-ERR-ERR-ERR
+    emulator
+        emulator -avd Nexus_5X_API_26 -netdelay none -netspeed full
+        adb uninstall com.meituan.map.app 
+        adb shell am start -n "com.meituan.map.app/com.meituan.map.app.MainActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
+        telnet localhost 5554
+        adb shell screenrecord /sdcard/demo.mp4; then adb pull
+        adb exec-out screenrecord /sdcard/demo.mp4; then adb pull
+        adb exec-out screencap -p > ~/Desktop/1.pn
+
+    ndk-stack
+        ndk-stack -sym armeabi/ -dump crash_log
+        $ANDROID_NDK_R16B_ROOT/ndk-stack -sym examples/android/mtmap/bin/armeabi -dump crash5 > crash5_frame
+
+wc
+    -l -w -c
+    wc file -L
+
+
+python
+    交互模式
+    bin() oct() int('', 2|8|10) hex()
+    spark: 
+        update ycm to python3.7: python3.7 install.py --clangd-completer --ts-completer --java-completer
+        cd /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages
+        ln -s /Users/junhe/Documents/spark-3.0.0-bin-hadoop2.7/python/pyspark ./
+
+awk
+    awk '{gsub(/mymarker/, "mymarker"a++);print}' examples/android/MapRenderDemo/maprenderandroidsdk/src/main/res/raw/marker_1000.geojson
+    awk -F '[,;]' '{print "{" $2 "," $1 "},"}' lngLat.txt
+    awk '{sum+=$3};END {print sum}' temp.txt
+
+vimium
+    ?   hjkl    d   u   f   F   yy  /   H   L   T   W   x   X
+
+mvn
+    mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
+    mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simple-webapp -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4 -DinteractiveMode=false
+    mvn package
+    mvn -s "/Users/junhe/.m2/mysettings.xml" package
+    mvn test
+    mvn dependency:resolve
+    mvn package -Dmaven.test.skip=true
+    mvn test -Dtest = CLASS_NAME1
+    mvn test -Dtest = CLASS_NAME1＃METHOD_NAME_1
+    mvn test -Dtest = CLASS_NAME1＃METHOD_NAME_NAME，CLASS_NAME2＃METHOD_NAME2
+
+
+ssh
+    // NAT
+    ssh -p 1111 root@127.0.0.1
+    scp -p 1111 ~/Downloads/CGAL-5.0.3.tar.xz root@127.0.0.1:~/Documents/
+
+Linux:
+    cat /etc/issue
+    cat /proc/version
+    cat /proc/cpuinfo
+    cat /proc/meminfo
+    free -m
+    getconf LONG_BIT
+    hostname
+
+    sftp zhaojunhe@jumper.sankuai.com
+    scl
+    yum install centos-release-scl
+        yum list all --enablerepo='centos-sclo-rh' | less
+        scl -l
+        sudo yum install devtoolset-8
+        scl enable  devtoolset-4 bash
+        exit
+
+    yum install rh-python36
+    scl enable rh-python36 bash
+
+    install python3
+        yum install epel-release
+        curl 'https://setup.ius.io/' -o setup-ius.sh
+        sh setup-ius.sh
+        yum --disablerepo="*" --enablerepo="ius" list python3*
+        yum --enablerepo=ius install python36u
+        yum --enablerepo=ius install python36-devel
+
+    install vim(https://www.programmersought.com/article/54271638569/)
+        sudo yum remove vim
+        rm -rf /usr/local/vim
+        /* rm -rf ~/.vim* */
+        yum install -y ncurses-devel
+        tar -zxvf vim-8.1.tar.gz
+        cd vim-8.1/src
+        /* ./configure --with-features=huge --enable-multibyte --enable-python3interp=yes --prefix=/usr/local/vim82 */
+        ./configure --with-features=huge --enable-multibyte --enable-python3interp=yes --prefix=/usr/local/vim82
+        ./configure --with-features=huge --enable-multibyte --with-luajit --enable-luainterp=yes --enable-fail-if-missing --with-lua-prefix=/usr/local --prefix=/usr/local/vim82  --enable-pythoninterp=yes --enable-python3interp=yes
+        sudo make && sudo make install
+        ln -s /usr/local/vim82/bin/vim /usr/bin/vim
+        curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+        (https://github.com/spf13/spf13-vim)
+        echo let g:spf13_bundle_groups=[\'general\', \'programming\', \'misc\', \'youcompleteme\'] >> .vimrc.before.local
+        vim->:BundleInstall!
+        cd ~/.spf13-vim-3/.vim/bundle/YouCompleteMe/
+        git submodule update --init --recursive
+        python3 install.py --clangd-completer
+        file DOWNLOAD HASH mismatch
+        centos6 GLIBCXX_3.4.14 not found
+
+        https://zhuanlan.zhihu.com/p/142358765
+        ./configure --with-features=huge \
+            --enable-rubyinterp=yes \
+            --enable-luainterp=yes \
+            --enable-perlinterp=yes \
+            --enable-python3interp=yes \
+            --enable-pythoninterp=yes \
+            --with-python-config-dir=/usr/lib64/python2.7/config \
+            --with-python3-config-dir=/usr/lib64/python3.6/config-3.6m-x86_64-linux-gnu \
+            --enable-fontset=yes \
+            --enable-cscope=yes \
+            --enable-multibyte \
+            --disable-gui \
+            --enable-fail-if-missing \
+            --prefix=/usr/local/vim82 \
+            --with-compiledby='Professional operations'
+hope
+    hope dfs -getmerge viewfs:///user/hadoop-app-maprender/output/part-00000.gz ~/Desktop/output/part-00000.gz
+    hope dfs -ls ./
+    hope dfs -ls ./junhe
+    hope dfs -put ch05-io/src/test/resources/file.gz /user/hadoop-app-maprender/junhe/file.gz
+    hope dfs -put input/ncdc/all/* junhe/input/ncdc/all/
+    hope dfs -rm -r -f junhe/roadline/test1
+    hope dfs -getmerge junhe/roadline/test1 test1.gz
+bash shell
+    ctrl-a  ctrl-e  ctrl-r  ctrl-w  ctrl-_  Alt-B   Alt-F   Alt-D
+
+hive:
+    desc app_maprender.roadmiddlelinkresult
+    describe formatted app_maprender.roadmiddlelinkresult
+    describe formatted app_maprender.roadmiddlelinkresult partition(dt='20220322',dv='202203221429junheroadv3_process_3')
+    show columns in app_maprender.roadmiddlelinkresult
+iterm2:
+    ^/(hotkey window)
