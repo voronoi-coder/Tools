@@ -178,7 +178,7 @@ git:
     push an existing repository:
         git remote add origin https://github.com/hahahJoey/CPPInPractice.git
         git push -u origin master
-    tokens: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
+    tokens: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
   patch:
     git format-patch -1 (commit-id)
     git format-patch (commit-id) .. (commit-id)
